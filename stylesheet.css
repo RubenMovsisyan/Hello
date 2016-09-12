@@ -1,0 +1,22 @@
+h1
+{
+	color:#F2FDC1;
+	text-align:center;
+}
+div
+{
+	background-color:#E50000;
+	width:330px;
+	margin-left:500px;
+	border-radius:44%;
+	border:3px solid black;
+}
+p
+{
+	font-family:Berlin Sans FB Demi, sans-serif;
+	font-size:20px;
+}
+mark
+{
+	background-color:#7AFFD3;
+}
