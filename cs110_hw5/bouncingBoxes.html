@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Canvas</title>
+</head>
+
+<body>
+	<p>
+	  <canvas id = "canvas" width = "1000" height="600" style = "border:1px solid red"></canvas>
+	  <script src = "jquery.js"></script>
+	</p>
+	<script>
+            let canvas = document.getElementById("canvas");
+            let context = canvas.getContext("2d");    	
+            const numPoints = 555;
+            const points = [];
+            for(let i = 0; i < numPoints; i++) 
+                {
+                    points.push(
+                        {
+                            x: Math.random() * canvas.width,	
+                            y: Math.random() * canvas.height,	
+                            width: Math.random() * 7,	
+                            height: Math.random() * 7,	
+                            xDelta: 1, 
+                            yDelta: 1, 	
+                            color: 'red',
+                        });          
+                }
+            
+            const draw = function() 
+                {
+                    context.clearRect(0, 0, canvas.width, canvas.height)
+                    points.forEach(function(point)
+                        {
+                            context.fillStyle = point.color;
+                            context.fillRect(point.x, point.y, point.width, point.height);
+                            if(point.x >= (canvas.width - point.width) || point.x <= 0)
+                                {
+                                    point.xDelta *= -1;		
+                                }
+                            if(point.y >= (canvas.height - point.height) || point.y <= 0)
+                                {
+                                    point.yDelta *= -1;		
+                                }
+                                
+                            point.x += point.xDelta;
+                            point.y += point.yDelta;
+                        });
+                };
+                
+            let animate = function() 
+                {
+                    draw();	
+                    setTimeout(animate, 1z);
+                };
+            
+            animate();  
+      </script>
+</body>
+</html>
